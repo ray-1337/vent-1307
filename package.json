@@ -16,6 +16,7 @@
     "typescript": "5.0.4"
   },
   "optionalDependencies": {
+    "better-sqlite3": "^8.3.0",
     "quick.db": "^9.1.4"
   }
 }
