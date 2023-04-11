@@ -17,7 +17,12 @@
   },
   "optionalDependencies": {
     "better-sqlite3": "^8.3.0",
+    "dayjs": "^1.11.7",
+    "marked": "^4.3.0",
     "oceanic.js": "^1.6.0",
     "quick.db": "^9.1.4"
+  },
+  "devDependencies": {
+    "@types/marked": "^4.0.8"
   }
 }
