@@ -6,6 +6,7 @@
 .pnp.js
 pnpm-lock.yaml
 *.env
+*.sqlite
 
 # testing
 /coverage
