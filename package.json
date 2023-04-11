@@ -1,8 +1,9 @@
 {
   "name": "vent-13373333",
   "scripts": {
-    "dev": "next dev",
+    "dev": "pnpm start",
     "build": "next build",
+    "start": "concurrently --kill-others \"pnpm botstart\" \"node start.js\"",
     "lint": "next lint",
     "botstart": "ts-node ./src/index.ts"
   },
