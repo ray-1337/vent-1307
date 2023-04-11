@@ -17,6 +17,7 @@
   },
   "optionalDependencies": {
     "better-sqlite3": "^8.3.0",
+    "concurrently": "^8.0.1",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "marked": "^4.3.0",
