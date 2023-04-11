@@ -17,6 +17,7 @@
   },
   "optionalDependencies": {
     "better-sqlite3": "^8.3.0",
+    "oceanic.js": "^1.6.0",
     "quick.db": "^9.1.4"
   }
 }
