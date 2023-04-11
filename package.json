@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "botstart": "ts-node ./src/index.ts"
   },
   "dependencies": {
     "@types/node": "18.15.11",
