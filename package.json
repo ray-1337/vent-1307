@@ -1,7 +1,7 @@
 {
   "name": "vent-13373333",
   "scripts": {
-    "dev": "pnpm start",
+    "dev": "concurrently --kill-others \"pnpm botstart\" \"node start.js\"",
     "build": "next build",
     "start": "concurrently --kill-others \"pnpm botstart\" \"node start.js\"",
     "lint": "next lint",
