@@ -59,11 +59,11 @@ client.on("interactionCreate", async (interaction) => {
         await interaction.defer(64);
 
         const message = interaction.data.components[0].components[0]?.value;
-        if (!message) return interaction.createMessage({content: "Invalid vent message value."});
+        if (!message) return interaction.createFollowup({content: "Invalid vent message value."});
 
         await setVent(marked.parseInline(message, { gfm: true, breaks: true }));
 
-        return interaction.createMessage({content: "Successfully created a new vent."});
+        return interaction.createFollowup({content: "Successfully created a new vent."});
       };
     };
   } catch (error) {
