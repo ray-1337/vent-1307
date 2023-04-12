@@ -45,7 +45,6 @@ client.on("interactionCreate", async (interaction) => {
               label: "Message",
               style: Constants.TextInputStyles.PARAGRAPH,
               minLength: 1,
-              // @ts-ignore
               maxLength: 2048,
               required: true, type: Constants.ComponentTypes.TEXT_INPUT,
               customID: "vent_message"
@@ -58,7 +57,7 @@ client.on("interactionCreate", async (interaction) => {
     if (interaction instanceof ModalSubmitInteraction) {
       if (interaction.data.customID == ventCustomIDModal) {
         await interaction.defer(64);
-        
+
         const message = interaction.data.components[0].components[0]?.value;
         if (!message) return interaction.createMessage({content: "Invalid vent message value."});
 
