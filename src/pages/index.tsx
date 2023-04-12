@@ -48,7 +48,7 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
         {
           vents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((ctx, index) => {
             return (
-              <div key={index} className={Style.vent_content} style={{ border: index == 0 ? "2px solid #363636" : undefined }}>
+              <div key={index} className={`${Style.vent_content} ${index == 0 ? Style.selfish : ""}`}>
                 <div className={Style.vent_value}>
                   <p>{ctx.message}</p>
                 </div>

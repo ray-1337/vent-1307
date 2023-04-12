@@ -76,6 +76,13 @@
   font-size: 0.9em;
 }
 
+.vent_content.selfish {
+  border: 2px solid;
+  border-color: #363636;
+  transition: border-color 250ms linear;
+  animation: newVent 5s infinite;
+}
+
 .vent_date {
   margin-top: 1rem;
   border-top: 1px solid #242224;
@@ -101,5 +108,23 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
+
+@keyframes newVent {
+  from {
+    border-color: #363636;
+  }
+
+  50% {
+    border-color: #dbdbdb;
+  }
+
+  75% {
+    border-color: #121112;
+  }
+
+  to {
+    border-color: #363636;
   }
 }
