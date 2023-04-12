@@ -1,7 +1,6 @@
 import "dotenv/config";
 import {Client, CommandInteraction, Constants, ModalSubmitInteraction} from "oceanic.js";
 import { setVent } from "./util/Vent";
-import { marked } from "marked";
 
 // dayjs
 import dayjsUTC from "dayjs/plugin/utc";
@@ -61,7 +60,7 @@ client.on("interactionCreate", async (interaction) => {
         const message = interaction.data.components[0].components[0]?.value;
         if (!message) return interaction.createFollowup({content: "Invalid vent message value."});
 
-        await setVent(marked.parseInline(message, { gfm: true, breaks: true }));
+        await setVent(message);
 
         return interaction.createFollowup({content: "Successfully created a new vent."});
       };
