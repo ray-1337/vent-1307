@@ -23,8 +23,6 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
     };
 
     document.title = "lost in the memories.";
-    document.body.style.background = "black";
-    document.documentElement.style.background = "black";
 
     setDisplayVent(true);
   }, []);
