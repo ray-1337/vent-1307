@@ -1,8 +1,8 @@
 const nextSafe = require("next-safe");
 
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
+  poweredByHeader: false,
   reactStrictMode: true,
 
   async headers () {
