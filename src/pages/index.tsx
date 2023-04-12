@@ -2,6 +2,8 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { FC, useState, useEffect } from "react";
 import { ventContent, getVents } from "@/util/Vent";
 import Style from "../styles/Vent.module.css";
+import { sanitize } from "isomorphic-dompurify";
+import { marked } from "marked";
 
 const ventLimitArray: number = 15;
 
@@ -50,10 +52,8 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
         {
           vents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((ctx, index) => {
             return (
-              <div key={index} className={`${Style.vent_content} ${index == 0 ? Style.selfish : ""}`}>
-                <div className={Style.vent_value}>
-                  <p>{ctx.message}</p>
-                </div>
+              <div key={index} data-id={ctx?.ventID || undefined} className={`${Style.vent_content} ${index == 0 ? Style.selfish : ""}`}>
+                <div className={Style.vent_value} dangerouslySetInnerHTML={{__html: ctx.message}} ></div>
 
                 {/* {ctx.images ? (<div className={Style.vent_img}> <img src={ctx.images}></img> </div>) : (<></>)} */}
 
@@ -72,6 +72,11 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
     const vents = await getVents();
+    if (vents?.length) {
+      vents.forEach((_, index) => {
+        vents[index].message = sanitize(marked.parseInline(vents[index].message, { gfm: true, breaks: true }))
+      });
+    };
     return {props: {vents: (vents || []).slice(0, ventLimitArray)}}
   } catch (error) {
     console.error(error);
