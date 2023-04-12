@@ -5,8 +5,7 @@
   --t_quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --t_expo_mod: cubic-bezier(0.14, 1, 0.22, 1);
   --paragraphFonts: "Plus Jakarta Sans", "Arial", monospace;
-  --bg: #010b13;
-  --monetaryBg: #121112;
+  --bg: black;
   --expoOut: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
