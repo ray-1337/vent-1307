@@ -3,6 +3,8 @@ import { FC, useState, useEffect } from "react";
 import { ventContent, getVents } from "@/util/Vent";
 import Style from "../styles/Vent.module.css";
 
+const ventLimitArray: number = 50;
+
 // https://paulie.dev/posts/2022/10/react-hydration-error-425-text-content-does-not-match-server-rendered-html/#hydration-safe-hook
 const useHydrationSafeDate = (date: Date) => {
   const [safeDate, setSafeDate] = useState<string>();
@@ -68,7 +70,7 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
     const vents = await getVents();
-    return {props: {vents}}
+    return {props: {vents: (vents || []).slice(0, ventLimitArray)}}
   } catch (error) {
     console.error(error);
     return {props: {vents: [] as ventContent[]}};
