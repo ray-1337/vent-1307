@@ -26,7 +26,7 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
       return;
     };
 
-    document.title = "lost in the memories.";
+    document.title = "five seconds flat.";
 
     setDisplayVent(true);
   }, []);
