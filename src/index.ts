@@ -57,6 +57,8 @@ client.on("interactionCreate", async (interaction) => {
 
     if (interaction instanceof ModalSubmitInteraction) {
       if (interaction.data.customID == ventCustomIDModal) {
+        await interaction.defer(64);
+        
         const message = interaction.data.components[0].components[0]?.value;
         if (!message) return interaction.createMessage({content: "Invalid vent message value."});
 
