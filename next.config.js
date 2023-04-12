@@ -1,4 +1,4 @@
-const {nextSafe} = require("next-safe");
+const nextSafe = require("next-safe");
 
 /** @type {import('next').NextConfig} */
 
