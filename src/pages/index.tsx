@@ -3,7 +3,7 @@ import { FC, useState, useEffect } from "react";
 import { ventContent, getVents } from "@/util/Vent";
 import Style from "../styles/Vent.module.css";
 
-const ventLimitArray: number = 50;
+const ventLimitArray: number = 15;
 
 // https://paulie.dev/posts/2022/10/react-hydration-error-425-text-content-does-not-match-server-rendered-html/#hydration-safe-hook
 const useHydrationSafeDate = (date: Date) => {
