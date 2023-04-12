@@ -21,7 +21,9 @@ const VentHome: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({v
 
   useEffect(() => {
     if (!vents?.length) {
-      return alert("Unable to retrieve memories. Try again later.");
+      alert("Unable to retrieve memories. Try again later.");
+      document.title = "i don't think it'll work this time.";
+      return;
     };
 
     document.title = "lost in the memories.";
