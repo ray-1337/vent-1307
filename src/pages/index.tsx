@@ -5,6 +5,8 @@ import Style from "../styles/Vent.module.css";
 import { sanitize } from "isomorphic-dompurify";
 import { marked } from "marked";
 
+const ventLimitArray: number = 15;
+
 // https://paulie.dev/posts/2022/10/react-hydration-error-425-text-content-does-not-match-server-rendered-html/#hydration-safe-hook
 const useHydrationSafeDate = (date: Date) => {
   const [safeDate, setSafeDate] = useState<string>();
@@ -75,15 +77,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         vents[index].message = sanitize(marked.parseInline(vents[index].message, { gfm: true, breaks: true }))
       });
     };
-    return {props: {
-      vents: (vents || [])
-      .filter(message => {
-        const oneWeekAgo = new Date();
-        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-        return new Date(message.date) >= oneWeekAgo;
-      })
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    }}
+    
+    return {
+      props: {
+        vents: (vents || []).slice(0, ventLimitArray)
+      }
+    };
   } catch (error) {
     console.error(error);
     return {props: {vents: [] as ventContent[]}};
